@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Roast Logger
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-list *ngFor="let roast of roastService.roasts; let i = index">
+      <ion-item inset="true">
+        <h1>{{roast.date}}</h1><h4>{{roast.name}}</h4>
+        <div slot="end">
+          <ion-button color="danger" shape="round" fill="outline" (click)="showConfirmAlert(i);"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button color="secondary" shape="round" fill="outline" [routerLink]="['/edit/', i]" routerDirection="forward"><ion-icon name="create"></ion-icon></ion-button>
+          <ion-button disabled color="primary" shape="round" fill="outline"><ion-icon name="cafe"></ion-icon></ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/add" routerDirection="forward">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>

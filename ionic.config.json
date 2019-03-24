@@ -1,0 +1,7 @@
+{
+  "name": "roastlogger",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
