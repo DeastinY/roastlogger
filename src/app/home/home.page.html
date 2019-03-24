@@ -10,13 +10,27 @@
   <div class="ion-padding">
     <ion-list *ngFor="let roast of roastService.roasts; let i = index">
       <ion-item inset="true">
-        <h1>{{roast.name}}</h1><br>
-        <h4 slot="end">{{roast.date | date}}</h4>
-        <div slot="end">
-          <ion-button color="danger" shape="round" fill="outline" (click)="showConfirmAlert(i);"><ion-icon name="trash"></ion-icon></ion-button>
-          <ion-button color="secondary" shape="round" fill="outline" [routerLink]="['/edit/', i]" routerDirection="forward"><ion-icon name="create"></ion-icon></ion-button>
-          <ion-button color="primary" shape="round" fill="outline" [routerLink]="['/tasting/', i]" routerDirection="forward"><ion-icon name="cafe"></ion-icon></ion-button>
-        </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size=8>
+                <h1>{{roast.name}}</h1><br>
+              </ion-col>
+            <ion-col size=4>
+                <h1>{{roast.date | date}}</h1>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button color="danger" expand="full" shape="round" fill="outline" (click)="showConfirmAlert(i);">Delete <ion-icon slot="end" name="trash"></ion-icon></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button color="secondary" expand="full" shape="round" fill="outline" [routerLink]="['/edit/', i]" routerDirection="forward">Edit <ion-icon slot="end" name="create"></ion-icon></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button color="primary" expand="full" shape="round" fill="outline" [routerLink]="['/tasting/', i]" routerDirection="forward">Taste <ion-icon slot="end" name="cafe"></ion-icon></ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
       </ion-item>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

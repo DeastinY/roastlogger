@@ -20,7 +20,7 @@ export class AddPage {
   ionViewWillEnter() {
     this.activatedRoute.paramMap.subscribe((queryParams: ParamMap) => {
       this.id = queryParams.get('roastid');
-      this.roast = this.roastService.roasts[this.id];
+      this.roast = this.roastService.roasts[this.id] || new Roast();
    });
   }
 

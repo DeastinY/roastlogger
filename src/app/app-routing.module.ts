@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'add', loadChildren: './add/add.module#AddPageModule' },
   { path: 'edit/:roastid', loadChildren: './add/add.module#AddPageModule' },
   { path: 'tasting/:roastid', loadChildren: './tasting/tasting.module#TastingPageModule'},
+  { path: 'add-tasting/:roastid', loadChildren: './add-tasting/add-tasting.module#AddTastingPageModule' },
+  { path: 'edit-tasting/:roastid/:tasteid', loadChildren: './add-tasting/add-tasting.module#AddTastingPageModule' },
 ];
 
 @NgModule({
