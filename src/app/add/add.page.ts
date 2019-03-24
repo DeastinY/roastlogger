@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RoastService, Roast } from '../roast.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -13,9 +13,15 @@ export class AddPage {
   public id: any;
   @ViewChild('pwaphoto') pwaphoto: ElementRef;
 
-  constructor(public roastService: RoastService, private activatedRoute: ActivatedRoute) { 
-    this.id = this.activatedRoute.snapshot.paramMap.get('roastid');
-    this.roast = this.roastService.roasts[this.id] || new Roast();
+  constructor(public roastService: RoastService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.roast = new Roast();
+  }
+
+  ionViewWillEnter() {
+    this.activatedRoute.paramMap.subscribe((queryParams: ParamMap) => {
+      this.id = queryParams.get('roastid');
+      this.roast = this.roastService.roasts[this.id];
+   });
   }
 
   openPWAPhotoPicker() {
@@ -61,7 +67,8 @@ export class AddPage {
     if (this.id == null) {
       this.roastService.addRoast(this.roast);
     } else {
-      this.roastService.roasts[this.id] = this.roast;
+      this.roastService.updateRoast(this.id, this.roast);
     }
+    this.router.navigateByUrl('/');
   }
 }

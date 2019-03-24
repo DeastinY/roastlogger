@@ -25,6 +25,11 @@ export class RoastService {
     this.roasts.splice(i,1);
     this.storage.set('roasts', this.roasts);
   }
+
+  updateRoast(roast, i) {
+    this.roasts[i] = roast;
+    this.storage.set('roasts', this.roasts);
+  }
 }
 
 export class Roast {
@@ -39,7 +44,7 @@ export class Roast {
   public notes: any;
 }
 
-class Tasting {
+export class Tasting {
   date: any;
   rating: any;
   notes: any;

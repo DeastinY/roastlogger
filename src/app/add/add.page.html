@@ -2,7 +2,7 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="createRoast()">
+  <form *ngIf="roast">
     <ion-item>
       <ion-label position="floating">Roast Name</ion-label>
       <ion-input [(ngModel)]="roast.name" name="name"></ion-input>
@@ -14,6 +14,10 @@
     <ion-item>
       <ion-label position="floating">Processing</ion-label>
       <ion-input [(ngModel)]="roast.processing" name="processing"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Date</ion-label>
+      <ion-datetime [(ngModel)]="roast.date" name="date" display-format="DD/MM/YYYY"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Weight In</ion-label>
@@ -34,10 +38,10 @@
     <ion-grid>
         <ion-row>
           <ion-col size="6" *ngFor="let img of roast.photos">
-            <img [src]="img" #imageSrc>
+            <ion-img [src]="img"></ion-img>
           </ion-col>
         </ion-row>
       </ion-grid>
-    <ion-button expand="full" fill="outline" routerLink="/" routerDirection="backward" (click)="createRoast()"><ion-icon name="save"></ion-icon> Save</ion-button>
+    <ion-button expand="full" fill="outline" (click)="createRoast()"><ion-icon name="save"></ion-icon> Save</ion-button>
   </form>
 </ion-content>
